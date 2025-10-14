@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reels</title>
+  <link rel="stylesheet" href="/reel.css">
+</head>
+<body>
+
+  <div class="reel-container">
+    <% for (let r of reel) { %>
+      <div class="reel">
+        <video playsinline muted preload="auto">
+          <source src="<%= r.videoUrl %>" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="caption"><%= r.description %></p>
+        <button class="sound-btn">🔇</button>
+      </div>
+    <% } %>
+  </div>
+
+  <%- include('includes/footer.ejs'); %>
+
+  <script>
+    const reels = document.querySelectorAll(".reel");
+    const videos = document.querySelectorAll(".reel video");
+    const buttons = document.querySelectorAll(".sound-btn");
+    const footer = document.querySelector("footer");
+
+    // ✅ Dynamically set each reel height = visible screen - footer height
+    function setReelHeight() {
+      const footerHeight = footer ? footer.offsetHeight : 0;
+      const viewportHeight = window.innerHeight;
+      const reelHeight = viewportHeight - footerHeight;
+
+      reels.forEach(reel => (reel.style.height = `${reelHeight}px`));
+      document.documentElement.style.setProperty("--reel-height", `${reelHeight}px`);
+    }
+
+    window.addEventListener("resize", setReelHeight);
+    window.addEventListener("orientationchange", setReelHeight);
+    window.addEventListener("load", setReelHeight);
+    setReelHeight();
+
+    // 🎥 Autoplay when visible
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.8 } // play when 80% visible
+    );
+
+    videos.forEach(video => observer.observe(video));
+
+    // 🔊 Toggle sound on tap or button
+    let soundEnabled = false;
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      videos.forEach(v => (v.muted = !soundEnabled));
+      buttons.forEach(b => (b.textContent = soundEnabled ? "🔊" : "🔇"));
+    }
+
+    videos.forEach(video => video.addEventListener("click", toggleSound));
+    buttons.forEach(btn => btn.addEventListener("click", toggleSound));
+
+    // 📱 Smooth snap-scroll like Instagram
+    const container = document.querySelector(".reel-container");
+    container.addEventListener("scroll", () => {
+      clearTimeout(container.snapTimeout);
+      container.snapTimeout = setTimeout(() => {
+        const scrollPos = container.scrollTop;
+        const reelHeight = container.clientHeight;
+        const nearest = Math.round(scrollPos / reelHeight) * reelHeight;
+        container.scrollTo({ top: nearest, behavior: "smooth" });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit-profile</title>
+  <link rel="stylesheet" href="/edit-profile.css">
+</head>
+<body>
+  <h1>Edit Profile</h1>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+  <form action="/edit-profile" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <div>
+      <label for="bio">Bio:</label>
+      <textarea id="bio" name="bio" rows="4" cols="50"><%= profile ? profile.bio : '' %></textarea>
+    </div>
+    <div>
+      <label for="image">Profile Picture:</label>
+      <input type="file" id="image" name="image" accept="image/*">
+    </div>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <%- include('includes/footer.ejs'); %>
+
+  
+</body>
+</html>

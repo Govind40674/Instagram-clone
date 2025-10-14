@@ -1,0 +1,112 @@
+/* ========== Global Page Styles ========== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  color: #262626;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Optional header/footer consistency */
+header, footer {
+  width: 100%;
+}
+
+/* ========== Feed Container ========== */
+.feed-container {
+  width: 100%;
+  max-width: 600px; /* Centered feed like Instagram */
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ========== Post Card (Normal & Admin) ========== */
+.post, .post-admin {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.post:hover, .post-admin:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ========== Image ========== */
+.post-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  background-color: #000;
+}
+
+/* ========== Post Details ========== */
+.post p, .post-admin p {
+  padding: 12px 16px 4px 16px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #262626;
+}
+
+.post-date {
+  display: block;
+  padding: 0 16px 12px 16px;
+  font-size: 0.8rem;
+  color: #8e8e8e;
+}
+
+/* ========== Admin Post Highlight ========== */
+.post-admin {
+  border: 1px solid #ff4b91;
+}
+
+.post-admin p {
+  color: #d63384;
+}
+
+/* ========== Responsive Layout ========== */
+@media (min-width: 768px) {
+  .feed-container {
+    max-width: 750px;
+  }
+
+  .post p, .post-admin p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .feed-container {
+    max-width: 800px;
+  }
+}
+
+/* ========== Mobile Optimizations ========== */
+@media (max-width: 480px) {
+  body {
+    background-color: #fff;
+  }
+
+  .feed-container {
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  .post, .post-admin {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .post p, .post-admin p {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}

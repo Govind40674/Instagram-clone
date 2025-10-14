@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+
+  <!-- Top profile info -->
+  <div class="profile2">
+    <p class="name"><%= member.name %></p>
+    <a href="/edit-profile"><button>Edit</button></a>
+  </div>
+
+  <div class="profile-pic">
+    <img src="<%= profile.image %>" alt="Profile Picture">
+    <p class="bio"><%= profile.bio %></p>
+
+    <a href="/followers"><p class="followers">Followers: <%= member.followers.length %></p></a>
+    <a href="/invite"><p class="invitations">Invitations: <%= invite.invitation.length %></p></a>
+  </div>
+
+  <!-- Posts Section -->
+  <div class="posts">
+    <% if (post && post.length > 0) { %>
+      <% for (let p of post) { %>
+        <div class="post-item">
+          <img src="<%= p.image %>" alt="Post Image" />
+          <p class="caption"><%= p.caption %></p>
+          <p class="date"><%= p.createdAt.toDateString() %></p>
+          <a href="/delete-post/<%= p._id %>" class="delete-btn">Delete</a>
+        </div>
+      <% } %>
+    <% } else { %>
+      <p class="no-content">No posts yet.</p>
+    <% } %>
+  </div>
+
+  <!-- Reels Section -->
+  <div class="reels">
+    <% if (reel && reel.length > 0) { %>
+      <% for (let r of reel) { %>
+        <div class="reels-post">
+          <video  muted controls>
+            <source src="<%= r.videoUrl %>" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="caption"><%= r.description %></p>
+          <p class="date"><%= r.createdAt.toDateString() %></p>
+          <a href="/delete-reel/<%= r._id %>" class="delete-btn">Delete</a>
+        </div>
+      <% } %>
+    <% } else { %>
+      <p class="no-content">No reels yet.</p>
+    <% } %>
+  </div>
+
+  <!-- Logout -->
+  <a href="/logout" class="logout-btn">Logout</a>
+
+  <!-- Footer -->
+  <%- include('includes/footer.ejs'); %>
+
+</body>
+</html>

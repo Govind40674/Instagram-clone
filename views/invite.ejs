@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Invitations</title>
+  <link rel="stylesheet" href="/invite.css" />
+</head>
+<body>
+  <% if(invitemember.length==0){ %>
+    <h1 class="noinvite">No Invitations</h1>
+  <% } %>
+
+ 
+  <% for(let m of invitemember){ %>
+    <div class="invite">
+      <img src="<%= m.image %>" alt="profile-pic" class="invitepic">
+      <p class="name"><%= m.name %></p>
+      <a href="/invite/accept/<%= m.name %>" class="acceptbtn">Accept</a>
+      <a href="/invite/reject/<%= m.name %>" class="rejectbtn">Reject</a>
+    </div>
+  <% } %>
+
+
+  <%- include('includes/footer.ejs'); %>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+  <link rel="stylesheet" href="/search.css">
+</head>
+<body>
+  <input  class="search-input"id="searchInput" type="text" placeholder="Search">
+  <% for(let m of member){ %>
+  <div class="member">
+    <img src="<%= m.image %>" alt="Profile Picture" class="profile-pic">
+    <a href="/profile-other/<%= m.name %>"><%= m.name %></a>
+
+    
+    </form>
+  </div>
+  <% } %>
+
+
+  
+<%- include('includes/footer.ejs'); %>
+
+  
+</body>
+ <script>
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault(); // stop form submission or reload
+        const name = searchInput.value.trim();
+        if (name) {
+          // Redirect to the user's profile
+          window.location.href = `/profile-other/${encodeURIComponent(name)}`;
+        }
+      }
+    });
+  </script>
+</html>

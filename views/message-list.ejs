@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message List</title>
+  <link rel="stylesheet" href="/message-list.css">
+</head>
+<body>
+  <h2>Messages</h2>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search followers...">
+  </div>
+
+  <!-- 👥 Followers list -->
+  <ul id="followersList">
+    <% if (followers && followers.length > 0) { %>
+      <% followers.forEach(function(follower) { %>
+        <li class="follower-item">
+          <img 
+            src="<%= follower.image || '/images/default.png' %>" 
+            alt="<%= follower.name %>" 
+            class="follower-pic"
+          >
+          <span class="follower-name"><%= follower.name %></span>
+          <a href="/message/<%= follower.name %>">
+            <button class="msg-btn">Message</button>
+          </a>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <p>No followers yet.</p>
+    <% } %>
+  </ul>
+
+  <%- include('includes/footer.ejs'); %>
+
+  <!-- 🔍 Script to handle Enter key search -->
+  <script>
+    const searchInput = document.getElementById("searchInput");
+
+    searchInput.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // prevent form submission if any
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = `/search-message?query=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

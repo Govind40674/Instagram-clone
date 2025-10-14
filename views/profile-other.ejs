@@ -1,0 +1,27 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= profile.name %>'s Profile</title>
+  <link rel="stylesheet" href="/profile-other.css">
+</head>
+<body>
+
+  <div class="profile">
+  
+      <div class="profile-card">
+        <img src="<%= profile.image %>" alt="<%= profile.name %>'s Picture" class="profile-pic">
+        <p class="name"><%= profile.name %></p>
+        <p class="bio"><%= profile.bio %></p>
+        <a href="/send-invite/<%= profile.name %>">
+          <button class="invite-button">Send Invite</button>
+        </a>
+      </div>
+  </div>
+
+  <%- include('includes/footer.ejs'); %>
+
+</body>
+</html>

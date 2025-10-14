@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>uload-reels</title>
+  <link rel="stylesheet" href="/upload.css">
+</head>
+<body>
+  <h1>Upload your reels</h1>
+  <form action="/upload-reel" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="video">Select video:</label>
+ 
+         <input type="file" id="video" name="video" accept="video/*"  required>
+    
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+    
+    <button type="submit">Upload</button>
+    <% if (errorreel) { %>
+    <p class="error"><%= errorreel %></p>
+  <% } %>
+  </form>
+  <form action="/upload-post" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="image">Select image:</label>
+    
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+
+    <label for="caption">Caption:</label>
+    <textarea id="caption" name="caption"  max="45" required></textarea>
+    <button type="submit">Upload Post</button>
+    <% if (errorpost) { %>
+    <p class="error"><%= errorpost %></p>
+  <% } %>
+  </form>
+  
+
+  
+<%- include('includes/footer.ejs'); %>
+  
+</body>
+</html>

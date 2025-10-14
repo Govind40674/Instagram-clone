@@ -1,0 +1,157 @@
+
+/* =======================
+   General Page Setup
+======================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* =======================
+   No Invitations Message
+======================= */
+.noinvite {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #777;
+  margin-top: 40px;
+}
+
+/* =======================
+   Invitation Card
+======================= */
+.invite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 14px;
+  padding: 15px 20px;
+  margin: 15px auto;
+  max-width: 600px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.invite:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* =======================
+   Profile Picture
+======================= */
+.invitepic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+  margin-right: 15px;
+}
+
+/* =======================
+   Name
+======================= */
+.name {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
+}
+
+/* =======================
+   Buttons
+======================= */
+.acceptbtn,
+.rejectbtn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.acceptbtn {
+  background-color: #28a745;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.acceptbtn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.rejectbtn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.rejectbtn:hover {
+  background-color: #a71d2a;
+  transform: scale(1.05);
+}
+
+/* =======================
+   Responsive Design
+======================= */
+
+/* Tablets (<= 768px) */
+@media (max-width: 768px) {
+  .invite {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .invitepic {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    margin-bottom: 10px;
+  }
+
+  .acceptbtn,
+  .rejectbtn {
+    width: 100%;
+    margin: 6px 0;
+    padding: 10px 0;
+  }
+}
+
+/* Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .invite {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .invitepic {
+    width: 70px;
+    height: 70px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .acceptbtn,
+  .rejectbtn {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+}

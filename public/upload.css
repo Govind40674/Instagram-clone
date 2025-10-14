@@ -1,0 +1,93 @@
+
+
+
+/* upload.css */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #222;
+  margin: 40px 0 30px 0;
+  font-size: 2rem;
+}
+
+form {
+  background: #fff;
+  margin: 0 auto 2rem auto;
+  padding: 24px 24px 16px 24px;
+  border-radius: 9px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input[type="file"] {
+  padding: 8px 0;
+}
+
+textarea {
+  min-height: 64px;
+  resize: vertical;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.error {
+  color: #e10;
+  padding: 10px 0 0 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  form {
+    max-width: 98vw;
+    padding: 12px 6vw 10px 6vw;
+    box-shadow: 0 1px 7px rgba(0,0,0,0.11);
+    gap: 14px;
+  }
+  h1 {
+    font-size: 1.34rem;
+    margin: 22px 0 15px 0;
+  }
+  textarea {
+    font-size: 0.97rem;
+    min-height: 46px;
+  }
+  button[type="submit"] {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,106 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+}
+
+/* 🩵 Header Container */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  z-index: 1000;
+}
+
+/* 🌐 Navbar layout */
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🧿 Logo */
+.logo a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.logo a:hover {
+  color: #555;
+}
+
+/* 🔹 Icons area */
+.nav-icons a {
+  text-decoration: none;
+  color: #000;
+  margin-left: 25px;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.nav-icons a:hover {
+  transform: scale(1.15);
+  color: #0095f6; /* Instagram blue */
+}
+
+/* ❤️ Heart icon */
+.fa-heart {
+  color: #e63946;
+}
+
+/* 💬 Message icon */
+.fa-message {
+  color: #333;
+}
+
+/* 📱 Responsive Styles */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo a {
+    font-size: 1.4rem;
+  }
+
+  .nav-icons a {
+    font-size: 1.4rem;
+    margin-left: 18px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  .logo a {
+    font-size: 1.3rem;
+  }
+
+  .nav-icons a {
+    font-size: 1.3rem;
+    margin-left: 15px;
+  }
+}
+
+

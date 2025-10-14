@@ -1,0 +1,135 @@
+/* message-list.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafc;
+  margin: 0;
+  padding: 20px 15px;
+  min-height: 100vh;
+  color: #222;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 22px;
+  color: #333;
+}
+
+/* Search box */
+.search-box {
+  max-width: 480px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+
+#searchInput {
+  width: 100%;
+  max-width: 480px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Followers list */
+#followersList {
+  list-style: none;
+  padding: 0;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.follower-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-sizing: border-box;
+  gap: 14px;
+}
+
+.follower-pic {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.follower-name {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+
+.msg-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.msg-btn:hover {
+  background-color: #0056b3;
+}
+
+/* No followers message styles */
+body p {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 15px 12px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  .search-box {
+    max-width: 98vw;
+  }
+  #searchInput {
+    font-size: 0.95rem;
+    padding: 9px 12px;
+  }
+  #followersList {
+    max-width: 100%;
+  }
+  .follower-item {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .follower-pic {
+    width: 44px;
+    height: 44px;
+  }
+  .follower-name {
+    font-size: 1rem;
+  }
+  .msg-btn {
+    font-size: 0.9rem;
+    padding: 7px 14px;
+  }
+}

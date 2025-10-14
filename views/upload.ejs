@@ -15,7 +15,7 @@
          <input type="file" id="video" name="video" accept="video/*"  required>
     
     <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea>
+    <textarea id="description" name="description" maxlength="50" required></textarea>
     
     <button type="submit">Upload</button>
     <% if (errorreel) { %>
@@ -30,7 +30,7 @@
 
 
     <label for="caption">Caption:</label>
-    <textarea id="caption" name="caption"  max="45" required></textarea>
+    <textarea id="caption" name="caption"  maxlength="35" required></textarea>
     <button type="submit">Upload Post</button>
     <% if (errorpost) { %>
     <p class="error"><%= errorpost %></p>

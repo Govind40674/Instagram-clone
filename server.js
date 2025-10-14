@@ -22,6 +22,7 @@ const validationRegistrationlogin=require("./validation/login");
 const Profile = require("./models/profile");
 const validationRegistrationprofile=require("./validation/edit-profile");
 const fs = require("fs");
+const minifyHTML = require('express-minify-html-2')
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const { v2: cloudinary } = require("cloudinary");
@@ -42,6 +43,20 @@ cloudinary.config({
 
 const app = express();
 const server = http.createServer(app);
+app.use(
+  minifyHTML({
+    override: true,
+   
+    exceptionUrls: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+    },
+  }),
+)
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -175,55 +190,10 @@ app.get("/upload",csrfProtection,(req, res) => {
   res.render("upload",{csrfToken:req.csrfToken(),errorreel:errorreel,errorpost:errorpost});
 });
 
-// app.post("/upload-reel", upload.single("video"),body("description").escape(), csrfProtection, async (req, res) => {
-//   try {
-//     if (!req.file) {
-//       return res.redirect("/upload?error=No video uploaded");
-//     }
 
-
-//     const { description } = req.body;
-
-//     const videoData = new Reel({
-//       name: req.cookies.user,
-//       videoUrl:req.file.path,
-//       description:description,
-//     });
-
-//     await videoData.save();
-//     res.redirect("/");
-//   } catch (err) {
   
-//     res.redirect("/upload-reel?errorreel=Upload failed");
-//   }
-// });
-// app.post(
-//   "/upload-reel",
-//   videoUpload.single("video"),
-//   body("description").escape(),
-//   csrfProtection,
-//   async (req, res) => {
-//     try {
-//       if (!req.file) {
-//         return res.redirect("/upload?errorreel=No video uploaded");
-//       }
 
-//       const { description } = req.body;
 
-//       const videoData = new Reel({
-//         name: req.cookies.user,
-//         videoUrl: req.file.path, // Cloudinary video URL
-//         description: description,
-//       });
-
-//       await videoData.save();
-//       res.redirect("/");
-//     } catch (err) {
-//       // console.error("Video upload failed:", err);
-//       res.redirect("/upload-reel?errorreel=Upload failed");
-//     }
-//   }
-// );
 app.post(
   "/upload-reel",
   (req, res, next) => {
@@ -263,57 +233,8 @@ app.post(
 
 
 
-// app.post("/upload-post", upload.single("image"),body("caption").escape(), csrfProtection, async (req, res) => {
-//   try {
-//     if (!req.file) {
-//       return res.redirect("/upload?error=No image uploaded");
-//     }
 
 
-//     const { caption } = req.body;
-
-//     const postData = new Post({
-//       name: req.cookies.user,
-//       image:req.file.path,
-//       caption:caption,
-//     });
-
-//     await postData.save();
-//     res.redirect("/");
-//   } catch (err) {
-//     console.error(err);
-//     res.redirect("/upload-post?errorpost=Upload failed");
-//   }
-// });
-// app.post(
-//   "/upload-post",
-//   upload.single("image"),
-//   body("caption").escape(),
-//   csrfProtection,
-//   async (req, res) => {
-//     try {
-//       // Check if file exists
-//       if (!req.file) {
-//         return res.redirect("/upload?errorpost=No image uploaded");
-//       }
-
-//       const { caption } = req.body;
-
-//       // req.file.path will now contain the Cloudinary URL
-//       const postData = new Post({
-//         name: req.cookies.user,
-//         image: req.file.path, // Cloudinary image URL
-//         caption: caption,
-//       });
-
-//       await postData.save();
-//       res.redirect("/");
-//     } catch (err) {
-//       // console.error("Upload failed:", err);
-//       res.redirect("/upload-post?errorpost=Upload failed");
-//     }
-//   }
-// );
 app.post(
   "/upload-post",
   (req, res, next) => {
@@ -344,7 +265,7 @@ app.post(
       await postData.save();
       res.redirect("/");
     } catch (err) {
-      // console.error("Server Error During Upload:", err);
+     
       res.redirect("/upload-post?errorpost=Upload failed");
     }
   }

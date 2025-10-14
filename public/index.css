@@ -1,112 +1,129 @@
-/* ========== Global Page Styles ========== */
-body {
+/* Reset and Base */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+body {
   background-color: #fafafa;
-  color: #262626;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
 }
 
-/* Optional header/footer consistency */
-header, footer {
-  width: 100%;
-}
-
-/* ========== Feed Container ========== */
+/* Feed container */
 .feed-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 30px 20px;
+  justify-items: center;
+  margin-top: 30px; /* small space from header */
+}
+
+/* Post common style */
+.post,
+.post-admin {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
   width: 100%;
-  max-width: 600px; /* Centered feed like Instagram */
-  margin-top: 80px;
+  max-width: 360px;
+  height: 480px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ========== Post Card (Normal & Admin) ========== */
-.post, .post-admin {
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
+.post:hover,
+.post-admin:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.post:hover, .post-admin:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
-/* ========== Image ========== */
+/* Image fills from top (no gap) */
 .post-image {
   width: 100%;
-  height: auto;
+  height: 85%;
   object-fit: cover;
-  display: block;
-  background-color: #000;
+  display: block;       /* removes any inline gap */
+  margin: 0;            /* no top or bottom margin */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
-/* ========== Post Details ========== */
-.post p, .post-admin p {
-  padding: 12px 16px 4px 16px;
-  margin: 0;
+/* Caption and date area */
+.post p,
+.post-admin p {
   font-size: 0.95rem;
-  color: #262626;
+  color: #333;
+  padding: 8px 15px 4px;
+  line-height: 1.4;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .post-date {
   display: block;
-  padding: 0 16px 12px 16px;
   font-size: 0.8rem;
-  color: #8e8e8e;
+  color: #777;
+  padding: 0 15px 10px;
+  text-align: right;
 }
 
-/* ========== Admin Post Highlight ========== */
+/* Admin post highlight */
 .post-admin {
-  border: 1px solid #ff4b91;
+  border: 2px solid #ff6b6b;
 }
 
 .post-admin p {
-  color: #d63384;
+  color: #d63031;
 }
 
-/* ========== Responsive Layout ========== */
-@media (min-width: 768px) {
+/* Responsive Design */
+@media (max-width: 768px) {
   .feed-container {
-    max-width: 750px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 25px 10px;
+    margin-top: 25px;
   }
 
-  .post p, .post-admin p {
-    font-size: 1rem;
+  .post,
+  .post-admin {
+    max-width: 100%;
+    height: 440px;
+  }
+
+  .post-image {
+    height: 83%;
   }
 }
 
-@media (min-width: 1024px) {
-  .feed-container {
-    max-width: 800px;
-  }
-}
-
-/* ========== Mobile Optimizations ========== */
 @media (max-width: 480px) {
-  body {
-    background-color: #fff;
-  }
-
   .feed-container {
-    width: 100%;
-    margin-top: 60px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
   }
 
-  .post, .post-admin {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+  .post,
+  .post-admin {
+    height: 400px;
   }
 
-  .post p, .post-admin p {
-    padding: 10px 12px;
-    font-size: 0.9rem;
+  .post-image {
+    height: 82%;
   }
+}
+
+/* Footer alignment */
+footer {
+  margin-top: auto;
+  width: 100%;
 }

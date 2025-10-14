@@ -15,7 +15,15 @@
     <div class="post">
       <img src="<%= normal.image %>" alt="Post Image" class="post-image">
       <p><%= normal.caption %></p>
-      <span class="post-date"><%= normal.createdAt.toLocaleString() %></span>
+      
+       <span class="post-date">
+  <%= normal.createdAt.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  }) %>
+</span>
+
     </div>
   <% } %>
 
@@ -23,7 +31,13 @@
     <div class="post-admin">
       <img src="<%= admin.image %>" alt="Post Image" class="post-image">
       <p><%= admin.caption %></p>
-      <span class="post-date"><%= admin.createdAt.toLocaleString() %></span>
+     
+       <span class="post-date"><%= admin.createdAt.toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric"
+}) %></span>
+
     </div>
   <% } %>
 </div>

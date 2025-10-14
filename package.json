@@ -18,6 +18,7 @@
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-minify-html-2": "^2.0.0",
     "express-validator": "^7.2.1",
     "mongoose": "^8.19.1",
     "multer": "^2.0.2",

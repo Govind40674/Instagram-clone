@@ -55,7 +55,7 @@
     }
 
     socket.on("receiveMessage", (chat) => {
-      console.log("Received:", chat);
+      // console.log("Received:", chat);
       if (chat.sendername === receivername && chat.receivername === sendername) {
         appendMessage(chat.message, "receiver");
       }

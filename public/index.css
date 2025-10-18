@@ -16,75 +16,77 @@ body {
 /* Feed container */
 .feed-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
-  gap: 25px;
-  padding: 30px 20px;
-  justify-content: center; /* Center posts on all screen sizes */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
+  gap: 20px;
+  padding: 30px 15px;
+  justify-content: center;
   align-items: start;
-  margin-top: 30px; /* small space from header */
-  max-width: 1400px; /* limit total width */
+  margin-top: 30px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Post common style */
+/* Post card */
 .post,
 .post-admin {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   width: 100%;
-  max-width: 360px;
-  height: 480px;
+  max-width: 280px;
+  height: 360px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post:hover,
 .post-admin:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* Image fills from top (no gap) */
+/* Image section */
 .post-image {
   width: 100%;
-  height: 85%;
+  height: 75%;
   object-fit: cover;
-  display: block;
-  margin: 0;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
-/* Caption and date area */
+/* Caption area */
 .post p,
 .post-admin p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #333;
-  padding: 8px 15px 4px;
-  line-height: 1.4;
+  padding: 8px 12px 4px;
+  line-height: 1.3;
   text-align: left;
+  flex-grow: 1; /* ensures caption area expands if needed */
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal; /* allow multiple lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limit to 3 lines */
+  -webkit-box-orient: vertical;
 }
 
+/* Date at bottom */
 .post-date {
-  display: block;
   font-size: 0.8rem;
   color: #777;
-  padding: 0 15px 10px;
+  padding: 0 12px 10px;
   text-align: right;
+  margin-top: auto; /* sticks to bottom */
 }
 
-/* Admin post highlight */
+/* Admin highlight */
 .post-admin {
   border: 2px solid #ff6b6b;
 }
-
 .post-admin p {
   color: #d63031;
 }
@@ -92,45 +94,40 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .feed-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
   }
 }
 
 @media (max-width: 768px) {
   .feed-container {
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    padding: 25px 10px;
-    margin-top: 25px;
+    gap: 16px;
   }
 
   .post,
   .post-admin {
-    max-width: 100%;
-    height: 440px;
+    height: 340px;
   }
-
   .post-image {
-    height: 83%;
+    height: 73%;
   }
 }
 
 @media (max-width: 480px) {
   .feed-container {
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 14px;
   }
 
   .post,
   .post-admin {
-    height: 400px;
+    max-width: 100%;
+    height: 320px;
   }
 
   .post-image {
-    height: 82%;
+    height: 70%;
   }
 }
 

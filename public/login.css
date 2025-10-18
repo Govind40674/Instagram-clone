@@ -1,152 +1,121 @@
-/* Reset */
+/* Basic reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Body & Background */
+/* Body layout */
 body {
+  background-color: #ffffff;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #12131a;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-direction: column;
-  padding: 1.5rem;
-  color: #dde1e7;
+  justify-content: center;
+  color: #333;
+  padding: 20px;
 }
 
-/* Header */
+/* Title */
 h1 {
-  font-weight: 700;
-  font-size: 2.2rem;
-  margin-bottom: 2.2rem;
-  color: #f0f2f5;
-  letter-spacing: 0.8px;
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 25px;
   text-align: center;
-  user-select: none;
 }
 
-/* Form Container */
+/* Form container */
 form {
-  background: #1f2235;
-  border-radius: 15px;
-  padding: 2.3rem 2.5rem;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.75);
+  background: #f8f9fa;
+  padding: 35px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  gap: 16px;
 }
 
-form:hover {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.9);
-}
-
-/* Labels */
+/* Label */
 label {
-  font-size: 1rem;
-  color: #adb5bd;
-  margin-bottom: 0.4rem;
-  margin-top: 0.9rem;
-}
-
-/* Inputs */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  background: #2b2f45;
-  border: 1.5px solid #3a3e57;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  color: #e6e8ef;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #5768ef;
-  background-color: #3841a3;
-  outline: none;
-  box-shadow: 0 0 10px #5768efa3;
-}
-
-/* Submit Button */
-button[type="submit"] {
-  margin-top: 1.6rem;
-  background: linear-gradient(90deg, #5768ef, #3741a3);
-  color: #f0f2f5;
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 0.85rem 1rem;
-  border: none;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 14px rgba(87, 104, 239, 0.6);
-}
-
-button[type="submit"]:hover,
-button[type="submit"]:focus {
-  background: linear-gradient(90deg, #3741a3, #5768ef);
-  transform: scale(1.04);
-  box-shadow: 0 6px 20px rgba(87, 104, 239, 0.8);
-}
-
-/* Signup Link */
-a {
-  margin-top: 1rem;
-  text-align: center;
-  color: #8894b0;
   font-size: 0.95rem;
-  text-decoration: none;
-  transition: color 0.22s ease;
-  user-select: none;
+  color: #555;
 }
 
-a:hover,
-a:focus {
-  color: #5768ef;
+/* Input fields */
+input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #e5eff8;
+}
+
+/* Button */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Signup link */
+a {
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+a:hover {
   text-decoration: underline;
 }
 
-/* Error Message */
-form p[style*="color:red"] {
-  margin-top: 0.5rem;
+/* Error message */
+p {
   text-align: center;
-  color: #f44336 !important;
-  font-size: 1rem;
-  font-weight: 600;
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  body {
-    padding: 1.2rem 1rem;
+/* Responsive design */
+@media (max-width: 768px) {
+  form {
+    padding: 30px;
+    max-width: 320px;
   }
+
   h1 {
     font-size: 1.7rem;
-    margin-bottom: 1.5rem;
   }
+}
+
+@media (max-width: 480px) {
   form {
-    padding: 1.6rem 1.4rem;
+    padding: 25px;
+    width: 100%;
   }
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  button[type="submit"] {
-    font-size: 1rem;
-    padding: 0.65rem 0.9rem;
-  }
-  label {
-    font-size: 0.9rem;
-  }
-  a {
-    font-size: 0.9rem;
+
+  input, button {
+    font-size: 0.95rem;
   }
 }

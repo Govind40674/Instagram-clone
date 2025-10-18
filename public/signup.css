@@ -1,4 +1,4 @@
-/* === Reset & Global Styles === */
+/* Reset default browser styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,137 +6,116 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Body layout */
 body {
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #f0f0f0;
-  padding: 1rem;
+  justify-content: center;
+  padding: 20px;
+  color: #333;
 }
 
-/* === Title === */
+/* Title */
 h1 {
-  color: #ffffff;
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 25px;
   text-align: center;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* === Form Container === */
+/* Form container */
 form {
-  background: rgba(30, 30, 30, 0.95);
-  padding: 2rem 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: #f8f9fa;
+  padding: 35px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 16px;
 }
 
-form:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-/* === Labels === */
+/* Label styling */
 label {
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-  color: #e0e0e0;
+  font-size: 0.95rem;
+  color: #555;
 }
 
-/* === Input Fields === */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 0.8rem 1rem;
-  margin-bottom: 1.2rem;
-  border: 1px solid #444;
-  border-radius: 0.6rem;
-  background: #1a1a1a;
-  color: #f0f0f0;
+/* Input fields */
+input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 input:focus {
-  outline: none;
-  border-color: #00bcd4;
-  box-shadow: 0 0 6px rgba(0, 188, 212, 0.4);
+  border-color: #007bff;
 }
 
-/* === Button === */
+/* Button */
 button {
-  background: linear-gradient(135deg, #00bcd4, #008c9e);
-  color: white;
-  padding: 0.9rem;
-  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 0.6rem;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #00a6bb, #007888);
-  transform: scale(1.02);
+  background-color: #0056b3;
+  transform: translateY(-1px);
 }
 
-/* === Login Link === */
+/* Login link */
 a {
   text-align: center;
-  display: block;
-  margin-top: 1rem;
-  color: #00bcd4;
+  color: #007bff;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
 a:hover {
-  color: #00e0ff;
   text-decoration: underline;
 }
 
-/* === Error Message === */
+/* Error message */
 p {
   text-align: center;
-  font-size: 0.95rem;
-  color: #ff4d4d;
-  margin-top: 0.5rem;
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
-/* === Responsive Design === */
+/* Responsive design */
 @media (max-width: 768px) {
   form {
-    padding: 1.8rem;
-    max-width: 360px;
+    padding: 30px;
+    max-width: 320px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 }
 
 @media (max-width: 480px) {
   form {
-    padding: 1.5rem;
+    padding: 25px;
     width: 100%;
   }
 
   input, button {
-    font-size: 0.9rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
+    font-size: 0.95rem;
   }
 }
